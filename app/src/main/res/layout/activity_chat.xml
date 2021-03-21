@@ -87,7 +87,7 @@
                 android:id="@+id/imgSend_acrivity_chat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background ="#FFFFFF"
+                android:background="@drawable/roundcorner"
                 app:srcCompat="@drawable/ic_send" />
         </LinearLayout>
 
