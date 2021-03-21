@@ -37,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="25dp"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:layout_weight="1"
             android:text="Name" />
@@ -72,8 +73,8 @@
             <ImageButton
                 android:id="@+id/imgSend_activity_comment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF"
+                android:layout_height="58dp"
+                android:background="@drawable/roundcorner"
                 app:srcCompat="@drawable/ic_send" />
         </LinearLayout>
     </LinearLayout>
