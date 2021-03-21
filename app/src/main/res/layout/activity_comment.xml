@@ -36,6 +36,8 @@
             android:id="@+id/txtNameUser_activity_comment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textSize="25dp"
+            android:textColor="@color/black"
             android:layout_weight="1"
             android:text="Name" />
     </LinearLayout>
