@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ListView
 import com.github.kittinunf.fuel.Fuel
@@ -17,7 +18,7 @@ import com.beust.klaxon.Klaxon
 
 class HomeFragment :android.app.Fragment() {
     lateinit var lv_home_fragment: ListView
-    lateinit var btnAdd_home_fragment: ImageButton
+    lateinit var btnAdd_home_fragment: Button
     var arrayPosts: ArrayList<Post> = ArrayList()
     lateinit var contect: Context
     var username : String = ""
@@ -85,7 +86,7 @@ class HomeFragment :android.app.Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK && requestCode == 33)
-        //arrayUsers.add(Post("1", data?.getStringExtra("status").toString()))
+        arrayPosts.add(Post(100, data?.getStringExtra("status").toString(), listOf(), "test"))
         lv_home_fragment.adapter = Adapter_HomeFragment(contect, arrayPosts)
     }
 
