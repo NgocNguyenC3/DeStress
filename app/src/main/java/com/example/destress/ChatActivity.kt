@@ -26,8 +26,6 @@ class ChatActivity : AppCompatActivity() {
     private fun addEvents(intent: Intent?) {
         txtNameUser_acrivity_chat.text = intent?.getStringExtra("NameUser").toString()
 
-
-
         btnBack_acrivity_chat.setOnClickListener {
             finish()
         }

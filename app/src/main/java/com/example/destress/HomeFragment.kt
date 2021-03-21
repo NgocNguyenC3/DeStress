@@ -55,19 +55,15 @@ class HomeFragment :android.app.Fragment() {
             .jsonBody(JSONObject(jsonbody).toString())
             .response { request, response, result ->
                 kotlin.run {
-                    Log.d("GET POST STATUS CODE", response.statusCode.toString())
                     response_code = response.statusCode
                     Log.d("LOAD POSTS", result.get().toString())
 
                 }
             }
-        //        var body = Klaxon().parseArray<Post>(resp_body)
-//        body?.iterator()?.forEach {
-//            arrayPosts.add(it)
-//        }
     }
 
     fun loadPost_fallback() {
+        loadPosts()
         var cmt1 = Comment(1,"acbu1234", "Yeah, debugging it is really a pain")
         var cmt2 = Comment(2,"david098", "You will be alright! Don't ever give up!")
         var cmt3 = Comment(3,"jeremy87", "Wish you the best!")
@@ -92,6 +88,8 @@ class HomeFragment :android.app.Fragment() {
 
     private fun Events(view: View) {
         var intent: Intent = Intent(view.context, NewPost::class.java)
+        intent?.putExtra("username", username)
+        intent?.putExtra("password", password)
         startActivityForResult(intent, 33)
 
     }

@@ -18,10 +18,14 @@
         android:id="@+id/btn_hotline_fragment"
         android:layout_width="373dp"
         android:layout_height="58dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="2dp"
         android:layout_marginBottom="32dp"
-        android:text="Are You Stress?"
+        android:text="Are you stressful?"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lvHotline_fragment" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,10 +31,10 @@ class RegisterActivity: AppCompatActivity() {
     }
 
     private fun addEvents() {
-        var username = username_edittext_register.text.toString()
-        var password = password_edittext_register.text.toString()
-
         register_button_register.setOnClickListener {
+            var username = username_edittext_register.text.toString()
+            var password = password_edittext_register.text.toString()
+
             if (saveInfo(username, password)) {
                 Toast.makeText(this, "Register successfully!", Toast.LENGTH_SHORT).show()
             }
