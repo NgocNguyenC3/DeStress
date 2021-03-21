@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ListView
 
@@ -26,6 +27,10 @@ class HotlineFragment: android.app.Fragment(){
         addControls(view)
         lvHotline_fragment.adapter = Adapter_HotlineFragment(view.context, arrayCustomerCare)
         addEvents(view)
+        //val button = view.findViewById<Button>(R.id.btn_hotline_fragment)
+        //button.setOnClickListener{
+            //val intent = Intent(view.context,PictureActivity::class.java  )
+        //}
         return view
     }
 
