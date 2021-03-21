@@ -1,9 +1,18 @@
 package com.example.destress
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.extensions.jsonBody
+import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.fuel.httpPatch
+import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.result.Result
+
 
 class RegisterActivity: AppCompatActivity() {
     lateinit var username_edittext_register: EditText
@@ -21,9 +30,16 @@ class RegisterActivity: AppCompatActivity() {
     }
 
     private fun addEvents() {
+        var username = username_edittext_register.text.toString()
+        var password = password_edittext_register.text.toString()
 
         register_button_register.setOnClickListener {
-            saveInfo()
+            if (saveInfo(username, password)) {
+                Toast.makeText(this, "Register successfully!", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this, "Register failed!", Toast.LENGTH_SHORT).show()
+            }
             finish()
         }
         already_have_account_text_view.setOnClickListener {
@@ -31,8 +47,28 @@ class RegisterActivity: AppCompatActivity() {
         }
     }
 
-    private fun saveInfo() {
+    private fun saveInfo(username: String, password: String) : Boolean {
+        var succ: Boolean = false
+        var jsonbody = String.format("{'username': '%s', 'password': '%s'}", username, password)
+//        Fuel.get("http://google.com")
+//                .jsonBody("")
+//                .response { request, response, result ->
+//                    kotlin.run {
+//                        Log.d("REGISTER STATUS CODE", response.statusCode.toString())
+//                        succ = response.statusCode == 200
+//                    }
+//                }
+        Fuel.get("https://httpbin.org/get")
+                .response { request, response, result ->
+                    Log.d("REGISTER STATUS CODE", request.toString())
+                    Log.d("REGISTER STATUS CODE", response.toString())
 
+                    val (bytes, error) = result
+                    if (bytes != null) {
+                        Log.d("REGISTER STATUS CODE", String(bytes))
+                    }
+                }
+        return succ
     }
 
 
