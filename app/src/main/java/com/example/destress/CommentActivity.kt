@@ -25,6 +25,7 @@ class CommentActivity : AppCompatActivity() {
     private fun addEvents(intent: Intent?) {
         txtNameUser_activity_comment.text = intent?.getStringExtra("NameUser").toString()
 
+
         arrayUsersComment.add(UsersComment("1", "Alo alo"))
         lv_activity_comment.adapter = Adapter_Cmt(this, arrayUsersComment)
 

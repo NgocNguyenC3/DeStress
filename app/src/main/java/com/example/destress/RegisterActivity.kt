@@ -12,6 +12,7 @@ import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPatch
 import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.result.Result
+import org.json.JSONObject
 
 
 class RegisterActivity: AppCompatActivity() {
@@ -49,25 +50,17 @@ class RegisterActivity: AppCompatActivity() {
 
     private fun saveInfo(username: String, password: String) : Boolean {
         var succ: Boolean = false
-        var jsonbody = String.format("{'username': '%s', 'password': '%s'}", username, password)
-//        Fuel.get("http://google.com")
-//                .jsonBody("")
-//                .response { request, response, result ->
-//                    kotlin.run {
-//                        Log.d("REGISTER STATUS CODE", response.statusCode.toString())
-//                        succ = response.statusCode == 200
-//                    }
-//                }
-        Fuel.get("https://httpbin.org/get")
-                .response { request, response, result ->
-                    Log.d("REGISTER STATUS CODE", request.toString())
-                    Log.d("REGISTER STATUS CODE", response.toString())
+        var jsonbody = mapOf<String, String>("username" to username, "password" to password, "type" to "0")
 
-                    val (bytes, error) = result
-                    if (bytes != null) {
-                        Log.d("REGISTER STATUS CODE", String(bytes))
+        Fuel.post("http://10.0.2.2:8000/register")
+                .jsonBody(JSONObject(jsonbody).toString())
+                .response { request, response, result ->
+                    kotlin.run {
+                        Log.d("REGISTER STATUS CODE", response.statusCode.toString())
+                        succ = response.statusCode == 201
                     }
                 }
+
         return succ
     }
 

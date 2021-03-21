@@ -15,22 +15,26 @@ class MainActivity : AppCompatActivity() {
     lateinit var imgHotlin_activity_main: ImageButton
     lateinit var imgUsers_activity_main: ImageButton
     lateinit var frlayout_activity_main: FrameLayout
-
+    var username : String = ""
+    var password : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         addControls()
         intent = getIntent()
+        username = intent.getStringExtra("username").toString()
+        password = intent.getStringExtra("password").toString()
+
         addEvents()
     }
 
     private fun addEvents() {
         imgHome_activity_main.setOnClickListener {
-            Home()
+            Home(username, password)
         }
 
         imgChat_activity_main.setOnClickListener {
-            Chat()
+            Chat(username, password)
         }
 
         imgHotlin_activity_main.setOnClickListener {
@@ -50,22 +54,30 @@ class MainActivity : AppCompatActivity() {
         fragmentTrans?.commit()
     }
 
-    private fun Chat() {
+    private fun Chat(username: String, password: String) {
         var fragmentManager : android.app.FragmentManager? = getFragmentManager()
         var fragmentTrans : android.app.FragmentTransaction? = fragmentManager?.beginTransaction()
 
         var fragmentChat: ChatFragment = ChatFragment.getInstance()
+        var bundle: Bundle = Bundle()
+        bundle.putString("username", username)
+        bundle.putString("password", password)
+        fragmentChat.arguments = bundle
 
         fragmentTrans?.replace(R.id.frlayout_activity_main, fragmentChat)
         fragmentTrans?.commit()
     }
 
-    private fun Home() {
+    private fun Home(username: String, password: String) {
         var fragmentManager : android.app.FragmentManager? = getFragmentManager()
         var fragmentTrans : android.app.FragmentTransaction? = fragmentManager?.beginTransaction()
 
         var fragmentHome: HomeFragment = HomeFragment.getInstance()
 
+        var bundle: Bundle = Bundle()
+        bundle.putString("username", username)
+        bundle.putString("password", password)
+        fragmentHome.arguments = bundle
         fragmentTrans?.replace(R.id.frlayout_activity_main, fragmentHome)
         fragmentTrans?.commit()
 

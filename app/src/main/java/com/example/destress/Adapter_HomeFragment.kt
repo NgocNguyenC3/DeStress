@@ -4,18 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.app.ActivityCompat.startActivityForResult
-import androidx.core.content.ContextCompat.startActivity
-import com.example.destress.R
-import com.google.android.material.internal.ContextUtils.getActivity
 
-class Adapter_HomeFragment(var context: Context, var arrayUsers: ArrayList<Users>) : BaseAdapter() {
+class Adapter_HomeFragment(var context: Context, var arrayUsers: ArrayList<Post>) : BaseAdapter() {
     lateinit var imgChat_post: ImageButton
     lateinit var txtStatus_post: TextView
     lateinit var imgCmt_post: ImageButton
@@ -32,8 +26,8 @@ class Adapter_HomeFragment(var context: Context, var arrayUsers: ArrayList<Users
     }
 
     private fun addEvents(position: Int, view: View) {
-        txtStatus_post.text = arrayUsers[position].status
-        txtUser_post.text = arrayUsers[position].name
+        txtStatus_post.text = arrayUsers[position].content
+        txtUser_post.text = arrayUsers[position].author
         imgChat_post.setOnClickListener {
             chat(view, position)
         }
@@ -52,13 +46,13 @@ class Adapter_HomeFragment(var context: Context, var arrayUsers: ArrayList<Users
 
     private fun cmt(view: View, position: Int) {
         var intent: Intent = Intent(view.context, CommentActivity::class.java)
-        intent.putExtra("NameUser", arrayUsers[position].name)
+        intent.putExtra("NameUser", arrayUsers[position].author)
         view.context.startActivity(intent)
     }
 
     private fun chat(view: View, position: Int) {
         var intent: Intent = Intent(view.context, ChatActivity::class.java)
-        intent.putExtra("NameUser", arrayUsers[position].name)
+        intent.putExtra("NameUser", arrayUsers[position].author)
         view.context.startActivity(intent)
     }
 
