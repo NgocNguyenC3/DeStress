@@ -23,7 +23,7 @@ class ChatFragment: android.app.Fragment() {
         addEvents(view)
         return view
     }
-
+///
     private fun addEvents(view: View) {
         btnPro_chat_fragment.setOnClickListener {
             ProContact(view)
