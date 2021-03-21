@@ -1,6 +1,9 @@
 package com.example.destress
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.provider.ContactsContract.Intents.Insert.ACTION
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +27,13 @@ class Adapter_HotlineFragment(var context: Context, var arrayCustomerCare:  Arra
     private fun addEvents(position: Int, view: View) {
         txtInfor_hotline_infor.text = arrayCustomerCare[position].name
         txtPhoneNumber_hotline_infor.text = arrayCustomerCare[position].phoneNumber
+
+        imgCall_hotline_infor.setOnClickListener {
+            var intent: Intent = Intent(Intent.ACTION_DIAL)
+            var number: String = arrayCustomerCare[position].phoneNumber
+            intent.data = Uri.parse("tel:$number")
+            view.context.startActivity(intent)
+        }
     }
 
     private fun addControls(view: View) {
