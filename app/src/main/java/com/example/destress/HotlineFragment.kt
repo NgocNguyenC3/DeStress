@@ -12,7 +12,7 @@ import android.widget.ListView
 
 class HotlineFragment: android.app.Fragment(){
     lateinit var lvHotline_fragment: ListView
-    lateinit var btn_hotline_fragment: ImageButton
+    lateinit var btn_hotline_fragment: Button
     var arrayCustomerCare: ArrayList<CustomerCare> = ArrayList()
     override fun onCreateView(
         inflater: LayoutInflater,
