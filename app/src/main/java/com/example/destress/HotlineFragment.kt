@@ -20,17 +20,17 @@ class HotlineFragment: android.app.Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         var view: View = inflater.inflate(R.layout.hotline_fargment, container, false)
-        arrayCustomerCare.add(CustomerCare("John", "0123456789"))
-        arrayCustomerCare.add(CustomerCare("Michael", "012343553"))
-        arrayCustomerCare.add(CustomerCare("Jean", "0123435533"))
+        arrayCustomerCare.add(CustomerCare("Health Care Department", "0123456789"))
+        arrayCustomerCare.add(CustomerCare("Therapist", "012343553"))
+        arrayCustomerCare.add(CustomerCare("Family", "0123435533"))
         arrayCustomerCare.add(CustomerCare("Rosy", "01234355332"))
         addControls(view)
         lvHotline_fragment.adapter = Adapter_HotlineFragment(view.context, arrayCustomerCare)
         addEvents(view)
-        //val button = view.findViewById<Button>(R.id.btn_hotline_fragment)
-        //button.setOnClickListener{
-            //val intent = Intent(view.context,PictureActivity::class.java  )
-        //}
+        btn_hotline_fragment.setOnClickListener{
+            val intent = Intent(view.context,PictureActivity::class.java )
+            view.context.startActivity(intent)
+        }
         return view
     }
 

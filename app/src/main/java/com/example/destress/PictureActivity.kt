@@ -6,9 +6,10 @@ import android.widget.ListView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.destress.adapter.ItemAdapter
 import com.example.destress.data.Datasource
+import com.example.destress.model.ImageListView
 
 class PictureActivity : AppCompatActivity() {
-    lateinit var lv_picture_activity: RecyclerView
+    lateinit var lv_picture_activity: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +20,8 @@ class PictureActivity : AppCompatActivity() {
     }
 
     private fun addEvents() {
-        lv_picture_activity.adapter = ItemAdapter(this, Datasource().loadAffirmations())
-        lv_picture_activity.setHasFixedSize(true)
+        lv_picture_activity.adapter = ImageListView(this, Datasource().loadAffirmations())
+
 
     }
 

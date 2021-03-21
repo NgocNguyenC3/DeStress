@@ -21,6 +21,8 @@ class Adapter_HomeFragment(var context: Context, var arrayUsers: ArrayList<Users
     lateinit var imgCmt_post: ImageButton
     lateinit var imgReact_post:ImageButton
     lateinit var imgBlock_post: ImageButton
+    lateinit var txtUser_post: TextView
+
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var view: View = LayoutInflater.from(context).inflate(R.layout.post,parent, false)
@@ -31,6 +33,7 @@ class Adapter_HomeFragment(var context: Context, var arrayUsers: ArrayList<Users
 
     private fun addEvents(position: Int, view: View) {
         txtStatus_post.text = arrayUsers[position].status
+        txtUser_post.text = arrayUsers[position].name
         imgChat_post.setOnClickListener {
             chat(view, position)
         }
@@ -60,6 +63,7 @@ class Adapter_HomeFragment(var context: Context, var arrayUsers: ArrayList<Users
     }
 
     private fun addControls(view: View) {
+        txtUser_post = view.findViewById(R.id.txtUser_post)
         imgChat_post = view.findViewById(R.id.imgChat_post)
         txtStatus_post = view.findViewById(R.id.txtStatus_post)
         imgCmt_post = view.findViewById(R.id.imgCmt_post)
