@@ -15,7 +15,7 @@ class SplashScreenActivity: AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         intent = getIntent()
 
-        Timer("SettingUp", false).schedule(0) {
+        Timer("SettingUp", false).schedule(2000) {
             finish()
         }
     }
